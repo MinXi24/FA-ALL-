@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TravelMate - Your guide to exploring Singapore's iconic landmarks, cultural sites, museums, and hidden gems. Perfect for foreign exchange students at Republic Polytechnic.">
+    <meta name="keywords" content="Singapore, travel guide, tourist attractions, Republic Polytechnic, exchange students">
+    <title>TravelMate - Discover Singapore</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>TravelMate</h1>
+                <p class="tagline">Your Singapore Adventure Companion</p>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#landmarks" class="nav-link">Landmarks</a></li>
+                <li><a href="#cultural" class="nav-link">Cultural Sites</a></li>
+                <li><a href="#museums" class="nav-link">Museums</a></li>
+                <li><a href="#hidden-gems" class="nav-link">Hidden Gems</a></li>
+                <li><a href="#essentials" class="nav-link">Essentials</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="hero-title">Welcome to Singapore</h2>
+            <p class="hero-subtitle">Your AI-Powered Guide for Exchange Students</p>
+            <p class="hero-description">Navigate transport, discover food, and explore leisure activities with personalized recommendations</p>
+            <button class="cta-button" id="getStarted">Start Exploring</button>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to discover</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title">Why TravelMate?</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="icon">🗺️</div>
+                    <h3>Personalized Guidance</h3>
+                    <p>AI-powered recommendations tailored to your preferences and budget</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🚇</div>
+                    <h3>Transport Made Easy</h3>
+                    <p>Navigate Singapore's MRT, buses, and alternative routes with confidence</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🍜</div>
+                    <h3>Affordable Dining</h3>
+                    <p>Discover hawker centers, student-friendly cafes, and local favorites</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">⚡</div>
+                    <h3>Real-Time Adaptation</h3>
+                    <p>Get updated suggestions based on weather, time, and your location</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Iconic Landmarks Section -->
+    <section class="attractions-section" id="landmarks">
+        <div class="container">
+            <h2 class="section-title">Iconic Landmarks</h2>
+            <p class="section-description">Must-visit destinations that define Singapore's skyline and spirit</p>
+            <div class="attractions-grid">
+                <article class="attraction-card" data-category="landmark">
+                    <div class="card-image" style="background: linear-gradient(135deg, #8B4444, #A85858);"></div>
+                    <div class="card-content">
+                        <h3>Marina Bay Sands</h3>
+                        <p class="location">📍 Bayfront Avenue</p>
+                        <p>Iconic integrated resort with rooftop infinity pool, SkyPark observation deck, luxury shopping, and stunning city views.</p>
+                        <div class="card-tags">
+                            <span class="tag">Architecture</span>
+                            <span class="tag">Photography</span>
+                        </div>
+                        <button class="learn-more" data-attraction="marina-bay-sands">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="landmark">
+                    <div class="card-image" style="background: linear-gradient(135deg, #4A7B5C, #5D9973);"></div>
+                    <div class="card-content">
+                        <h3>Gardens by the Bay</h3>
+                        <p class="location">📍 Marina Gardens Drive</p>
+                        <p>Futuristic nature park featuring Supertree Grove, Cloud Forest, Flower Dome, and spectacular light shows every evening.</p>
+                        <div class="card-tags">
+                            <span class="tag">Nature</span>
+                            <span class="tag">Free Entry</span>
+                        </div>
+                        <button class="learn-more" data-attraction="gardens-by-the-bay">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="landmark">
+                    <div class="card-image" style="background: linear-gradient(135deg, #A64B4B, #C15B5B);"></div>
+                    <div class="card-content">
+                        <h3>Merlion Park</h3>
+                        <p class="location">📍 One Fullerton</p>
+                        <p>Singapore's iconic symbol - a mythical creature with a lion's head and fish body, perfect for photo opportunities.</p>
+                        <div class="card-tags">
+                            <span class="tag">Landmark</span>
+                            <span class="tag">Free</span>
+                        </div>
+                        <button class="learn-more" data-attraction="merlion">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="landmark">
+                    <div class="card-image" style="background: linear-gradient(135deg, #5B7B5B, #6F9A6F);"></div>
+                    <div class="card-content">
+                        <h3>Sentosa Island</h3>
+                        <p class="location">📍 Sentosa Gateway</p>
+                        <p>Resort island with beaches, Universal Studios, S.E.A. Aquarium, cable car rides, and endless entertainment options.</p>
+                        <div class="card-tags">
+                            <span class="tag">Beach</span>
+                            <span class="tag">Theme Park</span>
+                        </div>
+                        <button class="learn-more" data-attraction="sentosa">Learn More</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Sites Section -->
+    <section class="attractions-section light-bg" id="cultural">
+        <div class="container">
+            <h2 class="section-title">Cultural Sites</h2>
+            <p class="section-description">Experience Singapore's rich multicultural heritage</p>
+            <div class="attractions-grid">
+                <article class="attraction-card" data-category="cultural">
+                    <div class="card-image" style="background: linear-gradient(135deg, #8D5B4B, #A86E5B);"></div>
+                    <div class="card-content">
+                        <h3>Chinatown</h3>
+                        <p class="location">📍 Chinatown District</p>
+                        <p>Vibrant neighborhood with traditional shophouses, Buddha Tooth Relic Temple, hawker centers, and Chinese heritage.</p>
+                        <div class="card-tags">
+                            <span class="tag">Heritage</span>
+                            <span class="tag">Food</span>
+                        </div>
+                        <button class="learn-more" data-attraction="chinatown">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="cultural">
+                    <div class="card-image" style="background: linear-gradient(135deg, #5B7854, #6F9467);"></div>
+                    <div class="card-content">
+                        <h3>Little India</h3>
+                        <p class="location">📍 Serangoon Road</p>
+                        <p>Colorful district showcasing Indian culture through temples, shops, authentic cuisine, and vibrant street art.</p>
+                        <div class="card-tags">
+                            <span class="tag">Culture</span>
+                            <span class="tag">Shopping</span>
+                        </div>
+                        <button class="learn-more" data-attraction="little-india">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="cultural">
+                    <div class="card-image" style="background: linear-gradient(135deg, #9B5B5B, #B36E6E);"></div>
+                    <div class="card-content">
+                        <h3>Kampong Glam</h3>
+                        <p class="location">📍 Arab Street</p>
+                        <p>Historic Malay-Muslim quarter featuring Sultan Mosque, trendy cafes, boutiques, and Middle Eastern cuisine.</p>
+                        <div class="card-tags">
+                            <span class="tag">History</span>
+                            <span class="tag">Halal Food</span>
+                        </div>
+                        <button class="learn-more" data-attraction="kampong-glam">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="cultural">
+                    <div class="card-image" style="background: linear-gradient(135deg, #6B7B5B, #809670);"></div>
+                    <div class="card-content">
+                        <h3>Sri Mariamman Temple</h3>
+                        <p class="location">📍 South Bridge Road</p>
+                        <p>Singapore's oldest Hindu temple with stunning gopuram (tower), ornate sculptures, and cultural significance.</p>
+                        <div class="card-tags">
+                            <span class="tag">Temple</span>
+                            <span class="tag">Free Entry</span>
+                        </div>
+                        <button class="learn-more" data-attraction="sri-mariamman">Learn More</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Museums Section -->
+    <section class="attractions-section" id="museums">
+        <div class="container">
+            <h2 class="section-title">Museums & Galleries</h2>
+            <p class="section-description">Discover Singapore's history, art, and innovation</p>
+            <div class="attractions-grid">
+                <article class="attraction-card" data-category="museum">
+                    <div class="card-image" style="background: linear-gradient(135deg, #8B5454, #A66767);"></div>
+                    <div class="card-content">
+                        <h3>National Museum of Singapore</h3>
+                        <p class="location">📍 Stamford Road</p>
+                        <p>Singapore's oldest museum showcasing the nation's history through immersive galleries and multimedia exhibits.</p>
+                        <div class="card-tags">
+                            <span class="tag">History</span>
+                            <span class="tag">Student Discount</span>
+                        </div>
+                        <button class="learn-more" data-attraction="national-museum">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="museum">
+                    <div class="card-image" style="background: linear-gradient(135deg, #5B7B5B, #6F9A6F);"></div>
+                    <div class="card-content">
+                        <h3>ArtScience Museum</h3>
+                        <p class="location">📍 Marina Bay Sands</p>
+                        <p>Lotus-shaped museum exploring intersection of art, science, culture, and technology through innovative exhibitions.</p>
+                        <div class="card-tags">
+                            <span class="tag">Art</span>
+                            <span class="tag">Interactive</span>
+                        </div>
+                        <button class="learn-more" data-attraction="artscience">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="museum">
+                    <div class="card-image" style="background: linear-gradient(135deg, #9B5454, #B66767);"></div>
+                    <div class="card-content">
+                        <h3>Asian Civilisations Museum</h3>
+                        <p class="location">📍 Empress Place</p>
+                        <p>Premier museum showcasing pan-Asian cultures through artifacts, textiles, and decorative arts from across Asia.</p>
+                        <div class="card-tags">
+                            <span class="tag">Culture</span>
+                            <span class="tag">Artifacts</span>
+                        </div>
+                        <button class="learn-more" data-attraction="asian-civilisations">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="museum">
+                    <div class="card-image" style="background: linear-gradient(135deg, #5B7854, #6F9467);"></div>
+                    <div class="card-content">
+                        <h3>Science Centre Singapore</h3>
+                        <p class="location">📍 Jurong East</p>
+                        <p>Interactive science center with hands-on exhibits, planetarium shows, and STEM learning experiences.</p>
+                        <div class="card-tags">
+                            <span class="tag">Science</span>
+                            <span class="tag">Family Friendly</span>
+                        </div>
+                        <button class="learn-more" data-attraction="science-centre">Learn More</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hidden Gems Section -->
+    <section class="attractions-section light-bg" id="hidden-gems">
+        <div class="container">
+            <h2 class="section-title">Hidden Gems</h2>
+            <p class="section-description">Local favorites and off-the-beaten-path discoveries</p>
+            <div class="attractions-grid">
+                <article class="attraction-card" data-category="hidden">
+                    <div class="card-image" style="background: linear-gradient(135deg, #7B6B5B, #96856F);"></div>
+                    <div class="card-content">
+                        <h3>Haji Lane</h3>
+                        <p class="location">📍 Kampong Glam</p>
+                        <p>Narrow alleyway bursting with colorful street art, indie boutiques, quirky cafes, and Instagram-worthy corners.</p>
+                        <div class="card-tags">
+                            <span class="tag">Street Art</span>
+                            <span class="tag">Shopping</span>
+                        </div>
+                        <button class="learn-more" data-attraction="haji-lane">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="hidden">
+                    <div class="card-image" style="background: linear-gradient(135deg, #5B7B64, #6F9A7D);"></div>
+                    <div class="card-content">
+                        <h3>Pulau Ubin</h3>
+                        <p class="location">📍 Off Changi Point</p>
+                        <p>Rustic island escape with cycling trails, mangrove forests, traditional kampong life, and natural biodiversity.</p>
+                        <div class="card-tags">
+                            <span class="tag">Nature</span>
+                            <span class="tag">Adventure</span>
+                        </div>
+                        <button class="learn-more" data-attraction="pulau-ubin">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="hidden">
+                    <div class="card-image" style="background: linear-gradient(135deg, #8B5B5B, #A86E6E);"></div>
+                    <div class="card-content">
+                        <h3>Tiong Bahru</h3>
+                        <p class="location">📍 Tiong Bahru Estate</p>
+                        <p>Hip neighborhood with Art Deco architecture, independent bookshops, artisan cafes, and a charming wet market.</p>
+                        <div class="card-tags">
+                            <span class="tag">Hipster</span>
+                            <span class="tag">Cafes</span>
+                        </div>
+                        <button class="learn-more" data-attraction="tiong-bahru">Learn More</button>
+                    </div>
+                </article>
+
+                <article class="attraction-card" data-category="hidden">
+                    <div class="card-image" style="background: linear-gradient(135deg, #5B7B5B, #6F9A6F);"></div>
+                    <div class="card-content">
+                        <h3>MacRitchie Reservoir</h3>
+                        <p class="location">📍 Central Catchment</p>
+                        <p>Nature reserve with TreeTop Walk suspension bridge, jungle trails, kayaking, and diverse wildlife spotting.</p>
+                        <div class="card-tags">
+                            <span class="tag">Hiking</span>
+                            <span class="tag">Free</span>
+                        </div>
+                        <button class="learn-more" data-attraction="macritchie">Learn More</button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essentials Section -->
+    <section class="essentials-section" id="essentials">
+        <div class="container">
+            <h2 class="section-title">Essential Information</h2>
+            <div class="essentials-grid">
+                <div class="essential-card">
+                    <h3>🚇 Transportation</h3>
+                    <ul>
+                        <li><strong>MRT:</strong> Efficient subway system covering island-wide</li>
+                        <li><strong>SimplyGo:</strong> Tap credit/debit card for seamless travel</li>
+                        <li><strong>Student Concession:</strong> Apply for discounted fares</li>
+                        <li><strong>Grab/Gojek:</strong> Ride-sharing apps for convenience</li>
+                    </ul>
+                </div>
+                <div class="essential-card">
+                    <h3>🍜 Affordable Food</h3>
+                    <ul>
+                        <li><strong>Hawker Centers:</strong> $3-6 meals with diverse cuisines</li>
+                        <li><strong>Food Courts:</strong> Air-conditioned budget dining</li>
+                        <li><strong>Kopitiam:</strong> Traditional breakfast spots</li>
+                        <li><strong>Caifan:</strong> Mixed rice - economical and customizable</li>
+                    </ul>
+                </div>
+                <div class="essential-card">
+                    <h3>💡 Tips & Tricks</h3>
+                    <ul>
+                        <li><strong>Peak Hours:</strong> Avoid MRT 8-9am, 6-7pm</li>
+                        <li><strong>Weather:</strong> Bring umbrella (tropical rain)</li>
+                        <li><strong>Chope Culture:</strong> Tissue packet reserves seats</li>
+                        <li><strong>AC Everywhere:</strong> Carry light jacket indoors</li>
+                    </ul>
+                </div>
+                <div class="essential-card">
+                    <h3>📱 Useful Apps</h3>
+                    <ul>
+                        <li><strong>MyTransport:</strong> Real-time bus/MRT info</li>
+                        <li><strong>GrabFood/Deliveroo:</strong> Food delivery</li>
+                        <li><strong>Burpple:</strong> Restaurant deals and reviews</li>
+                        <li><strong>Weather@SG:</strong> Singapore weather updates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Explore Singapore?</h2>
+            <p>Let TravelMate be your personalized companion throughout your exchange journey</p>
+            <button class="cta-button-secondary" id="planTrip">Plan Your First Trip</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TravelMate</h3>
+                    <p>Empowering exchange students to discover Singapore with confidence and ease.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#landmarks">Landmarks</a></li>
+                        <li><a href="#cultural">Cultural Sites</a></li>
+                        <li><a href="#essentials">Essentials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://www.visitsingapore.com" target="_blank">Visit Singapore</a></li>
+                        <li><a href="https://www.rp.edu.sg" target="_blank">Republic Polytechnic</a></li>
+                        <li><a href="https://www.transitlink.com.sg" target="_blank">Public Transport</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>📧 hello@travelmate.sg</p>
+                    <p>📍 Republic Polytechnic, Singapore</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TravelMate. Designed for RP Exchange Students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Attraction Details -->
+    <div class="modal" id="attractionModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content loaded via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
