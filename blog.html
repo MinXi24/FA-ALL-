@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FA-ALL</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .blog-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .blog-post {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        .blog-post:last-child {
+            border-bottom: none;
+        }
+        .blog-post h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        .post-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Blog</h1>
+            <p class="tagline">Thoughts, Tutorials, and Insights</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+        
+        <div class="blog-content">
+            <h2>Latest Posts</h2>
+            
+            <div class="blog-post">
+                <h3>Getting Started with Modern Web Development</h3>
+                <p class="post-meta">Posted on January 10, 2026 | 5 min read</p>
+                <p>Learn the fundamentals of modern web development, including the latest frameworks, tools, and best practices that will help you build amazing web applications.</p>
+                <div class="card-preview">
+                    <span class="preview-tag">Tutorial</span>
+                    <span class="preview-tag">Web Development</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <h3>Understanding Responsive Design Principles</h3>
+                <p class="post-meta">Posted on January 8, 2026 | 7 min read</p>
+                <p>Dive deep into responsive design principles and learn how to create websites that work seamlessly across all devices and screen sizes.</p>
+                <div class="card-preview">
+                    <span class="preview-tag">Design</span>
+                    <span class="preview-tag">CSS</span>
+                </div>
+            </div>
+
+            <div class="blog-post">
+                <h3>Optimizing Performance in Web Applications</h3>
+                <p class="post-meta">Posted on January 5, 2026 | 10 min read</p>
+                <p>Discover practical techniques to optimize your web application's performance, from code splitting to lazy loading and caching strategies.</p>
+                <div class="card-preview">
+                    <span class="preview-tag">Performance</span>
+                    <span class="preview-tag">Optimization</span>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Categories</h2>
+            <div class="card-preview" style="margin-top: 1rem;">
+                <span class="preview-tag">Tutorials</span>
+                <span class="preview-tag">Best Practices</span>
+                <span class="preview-tag">Case Studies</span>
+                <span class="preview-tag">News</span>
+                <span class="preview-tag">Tips & Tricks</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FA-ALL. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

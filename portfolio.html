@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - FA-ALL</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-link {
+            display: inline-block;
+            margin: 2rem 0 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .portfolio-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .project {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+        .project:last-child {
+            border-bottom: none;
+        }
+        .project h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Portfolio</h1>
+            <p class="tagline">Showcasing Our Work and Projects</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="index.html" class="back-link">← Back to Main Page</a>
+        
+        <div class="portfolio-content">
+            <h2>Featured Projects</h2>
+            
+            <div class="project">
+                <h3>Project Alpha</h3>
+                <p>A comprehensive web application built with modern technologies. Features include user authentication, real-time updates, and responsive design.</p>
+                <div class="card-preview">
+                    <span class="preview-tag">React</span>
+                    <span class="preview-tag">Node.js</span>
+                    <span class="preview-tag">MongoDB</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>Project Beta</h3>
+                <p>Mobile-first e-commerce platform with seamless shopping experience. Integrated payment gateway and inventory management.</p>
+                <div class="card-preview">
+                    <span class="preview-tag">Vue.js</span>
+                    <span class="preview-tag">Express</span>
+                    <span class="preview-tag">PostgreSQL</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>Project Gamma</h3>
+                <p>Data visualization dashboard for business analytics. Interactive charts and real-time data processing capabilities.</p>
+                <div class="card-preview">
+                    <span class="preview-tag">D3.js</span>
+                    <span class="preview-tag">Python</span>
+                    <span class="preview-tag">Flask</span>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Skills & Expertise</h2>
+            <div class="card-preview" style="margin-top: 1rem;">
+                <span class="preview-tag">Web Development</span>
+                <span class="preview-tag">UI/UX Design</span>
+                <span class="preview-tag">Database Management</span>
+                <span class="preview-tag">Cloud Services</span>
+                <span class="preview-tag">API Development</span>
+                <span class="preview-tag">Mobile Development</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 FA-ALL. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
