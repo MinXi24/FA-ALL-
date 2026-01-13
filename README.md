@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TravelMate 🌏
 
 **Your AI-Powered Singapore Adventure Companion for Exchange Students**
@@ -384,3 +385,7 @@ For issues or questions:
 ---
 
 **Built with ❤️ for exchange students exploring Singapore**
+=======
+# FA-ALL-
+Consolidate all websites
+>>>>>>> 2dab64799003d0f0052f2026f64c45d9e1dfe6f0
