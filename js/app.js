@@ -496,6 +496,8 @@ function initializeApp() {
     initSmoothScrolling();
     initIntersectionObserver();
     initNavbarScroll();
+    initializeFilterAndSort();
+    initializeReviewForm();
     
     console.log('TravelMate initialized successfully! 🚀');
 }
@@ -869,8 +871,12 @@ function handleCTAClick(e) {
         // Scroll to Iconic landmarks section
         document.getElementById('Iconic').scrollIntoView({ behavior: 'smooth' });
     } else if (buttonId === 'planTrip') {
-        // Show interactive trip planner (future feature)
-        showTripPlanner();
+        // Open AI chatbot directly
+        if (typeof window.botpressWebChat !== 'undefined') {
+            window.botpressWebChat.sendEvent({ type: 'show' });
+        } else {
+            console.warn('Botpress chatbot not loaded yet');
+        }
     }
 }
 
@@ -1001,18 +1007,26 @@ if ('serviceWorker' in navigator) {
 // ============================================
 
 if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        AppState,
+        attractionData,
+        throttle,
+        debounce
+    };
+}
+
 // ============================================
 // Botpress Chatbot Integration
 // ============================================
 
 // Function to open Botpress chat
 function openChatbot() {
-    window.botpressWebChat.sendEvent({ type: 'show' });
+    if (typeof window.botpressWebChat !== 'undefined') {
+        window.botpressWebChat.sendEvent({ type: 'show' });
+    }
 }
 
-// Connect your existing HTML buttons to the chatbot
-document.getElementById('getStarted').addEventListener('click', openChatbot);
-document.getElementById('planTrip').addEventListener('click', openChatbot);
+// Note: CTA buttons (getStarted, planTrip) are already handled in setupEventListeners() via handleCTAClick()
 
 // Optional: Also connect the "Learn More" buttons on attraction cards
 document.querySelectorAll('.learn-more').forEach(button => {
@@ -1120,14 +1134,270 @@ window.botpressWebChat.onEvent((event) => {
 // - "SCROLL_essentials" → scrolls to essentials section
 
 // ============================================
-// Module Exports (for testing)
+// Filter and Sort Functionality
 // ============================================
 
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        AppState,
-        attractionData,
-        throttle,
-        debounce
-    };
-}}
+function initializeFilterAndSort() {
+    // Get all filter and sort controls
+    const filterSelects = document.querySelectorAll('.filter-select');
+    const sortSelects = document.querySelectorAll('.sort-select');
+    
+    // Add event listeners to all filter selects
+    filterSelects.forEach(select => {
+        select.addEventListener('change', function() {
+            const section = this.dataset.section;
+            applyFiltersAndSort(section);
+        });
+    });
+    
+    // Add event listeners to all sort selects
+    sortSelects.forEach(select => {
+        select.addEventListener('change', function() {
+            const section = this.dataset.section;
+            applyFiltersAndSort(section);
+        });
+    });
+}
+
+function applyFiltersAndSort(section) {
+    // Get the section container
+    const sectionElement = document.querySelector(`[data-category="${section}"]`)?.closest('.attractions-section');
+    if (!sectionElement) return;
+    
+    // Get filter values
+    const statusFilter = sectionElement.querySelector(`[data-section="${section}"][id*="filter-status"]`)?.value || 'all';
+    const ratingFilter = sectionElement.querySelector(`[data-section="${section}"][id*="filter-rating"]`)?.value || 'all';
+    const sortValue = sectionElement.querySelector(`[data-section="${section}"][id*="sort"]`)?.value || 'default';
+    
+    // Get all attraction cards in this section
+    const grid = sectionElement.querySelector('.attractions-grid');
+    const cards = Array.from(grid.querySelectorAll('.attraction-card'));
+    
+    // Filter cards
+    let visibleCards = cards.filter(card => {
+        const cardCategory = card.dataset.category;
+        if (cardCategory !== section) return false;
+        
+        // Status filter
+        if (statusFilter !== 'all') {
+            const cardStatus = card.dataset.status;
+            if (cardStatus !== statusFilter) return false;
+        }
+        
+        // Rating filter
+        if (ratingFilter !== 'all') {
+            const cardRating = parseFloat(card.dataset.rating) || 0;
+            const minRating = parseFloat(ratingFilter);
+            if (cardRating < minRating) return false;
+        }
+        
+        return true;
+    });
+    
+    // Hide all cards first
+    cards.forEach(card => {
+        if (card.dataset.category === section) {
+            card.classList.add('hidden');
+        }
+    });
+    
+    // Sort visible cards
+    if (sortValue !== 'default') {
+        visibleCards.sort((a, b) => {
+            switch (sortValue) {
+                case 'rating-high':
+                    return (parseFloat(b.dataset.rating) || 0) - (parseFloat(a.dataset.rating) || 0);
+                case 'rating-low':
+                    return (parseFloat(a.dataset.rating) || 0) - (parseFloat(b.dataset.rating) || 0);
+                case 'name-az':
+                    return (a.dataset.name || '').localeCompare(b.dataset.name || '');
+                case 'name-za':
+                    return (b.dataset.name || '').localeCompare(a.dataset.name || '');
+                default:
+                    return 0;
+            }
+        });
+    }
+    
+    // Check if there are any results
+    let noResultsMsg = grid.querySelector('.no-results');
+    
+    if (visibleCards.length === 0) {
+        // Show no results message
+        if (!noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.className = 'no-results';
+            noResultsMsg.innerHTML = `
+                <h3>No attractions found</h3>
+                <p>Try adjusting your filters to see more results.</p>
+            `;
+            grid.appendChild(noResultsMsg);
+        }
+        noResultsMsg.style.display = 'block';
+    } else {
+        // Hide no results message
+        if (noResultsMsg) {
+            noResultsMsg.style.display = 'none';
+        }
+        
+        // Show and reorder visible cards
+        visibleCards.forEach(card => {
+            card.classList.remove('hidden');
+            grid.appendChild(card); // This moves the card to the end, creating the sorted order
+        });
+    }
+}
+
+// ============================================
+// Review Form Functionality
+// ============================================
+
+function initializeReviewForm() {
+    // Toggle between anonymous and named review
+    const reviewTypeRadios = document.querySelectorAll('input[name="reviewType"]');
+    const namedFields = document.getElementById('namedFields');
+    
+    reviewTypeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            if (this.value === 'named') {
+                namedFields.style.display = 'block';
+            } else {
+                namedFields.style.display = 'none';
+            }
+        });
+    });
+    
+    // Star rating functionality
+    const stars = document.querySelectorAll('.star');
+    const ratingValue = document.getElementById('ratingValue');
+    
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.dataset.rating;
+            ratingValue.value = rating;
+            
+            // Update star display
+            stars.forEach(s => {
+                const starRating = parseInt(s.dataset.rating);
+                if (starRating <= rating) {
+                    s.textContent = '★';
+                    s.classList.add('active');
+                } else {
+                    s.textContent = '☆';
+                    s.classList.remove('active');
+                }
+            });
+        });
+        
+        // Hover effect
+        star.addEventListener('mouseenter', function() {
+            const rating = this.dataset.rating;
+            stars.forEach(s => {
+                const starRating = parseInt(s.dataset.rating);
+                if (starRating <= rating) {
+                    s.textContent = '★';
+                } else {
+                    s.textContent = '☆';
+                }
+            });
+        });
+    });
+    
+    // Reset stars on mouse leave
+    const starRating = document.getElementById('starRating');
+    starRating.addEventListener('mouseleave', function() {
+        const currentRating = ratingValue.value;
+        stars.forEach(s => {
+            const starRating = parseInt(s.dataset.rating);
+            if (starRating <= currentRating) {
+                s.textContent = '★';
+            } else {
+                s.textContent = '☆';
+            }
+        });
+    });
+    
+    // Character counter for review text
+    const reviewText = document.getElementById('reviewText');
+    const charCount = document.getElementById('charCount');
+    
+    if (reviewText && charCount) {
+        reviewText.addEventListener('input', function() {
+            const count = this.value.length;
+            charCount.textContent = count;
+            
+            if (count > 500) {
+                this.value = this.value.substring(0, 500);
+                charCount.textContent = 500;
+            }
+        });
+    }
+    
+    // Form submission
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewSuccess = document.getElementById('reviewSuccess');
+    
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const reviewType = document.querySelector('input[name="reviewType"]:checked').value;
+            const rating = ratingValue.value;
+            const reviewTextValue = reviewText.value.trim();
+            
+            // Validation
+            if (rating === '0') {
+                alert('Please select a rating!');
+                return;
+            }
+            
+            if (reviewTextValue === '') {
+                alert('Please write your review!');
+                return;
+            }
+            
+            if (reviewType === 'named') {
+                const name = document.getElementById('reviewerName').value.trim();
+                const country = document.getElementById('reviewerCountry').value;
+                
+                if (name === '' || country === '') {
+                    alert('Please fill in your name and country!');
+                    return;
+                }
+            }
+            
+            // Simulate form submission
+            console.log('Review submitted:', {
+                type: reviewType,
+                rating: rating,
+                review: reviewTextValue
+            });
+            
+            // Hide form and show success message
+            reviewForm.style.display = 'none';
+            reviewSuccess.style.display = 'block';
+            
+            // Scroll to success message
+            reviewSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Optional: Reset form after 3 seconds and show it again
+            setTimeout(() => {
+                reviewForm.reset();
+                ratingValue.value = '0';
+                stars.forEach(s => {
+                    s.textContent = '☆';
+                    s.classList.remove('active');
+                });
+                charCount.textContent = '0';
+                namedFields.style.display = 'none';
+                
+                // You could optionally hide success and show form again
+                // reviewSuccess.style.display = 'none';
+                // reviewForm.style.display = 'block';
+            }, 3000);
+        });
+    }
+}
+
+// ============================================

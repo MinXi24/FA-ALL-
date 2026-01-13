@@ -82,8 +82,38 @@
         <div class="container">
             <h2 class="section-title">Iconic Landmarks</h2>
             <p class="section-description">Must-visit destinations that define Singapore's skyline and spirit</p>
+            
+            <!-- Filter and Sort Controls -->
+            <div class="filter-sort-container">
+                <div class="filter-controls">
+                    <label for="filter-status-iconic">Filter by:</label>
+                    <select id="filter-status-iconic" class="filter-select" data-section="Iconic">
+                        <option value="all">All Attractions</option>
+                        <option value="free">Free Entry</option>
+                        <option value="paid">Paid Entry</option>
+                    </select>
+                    
+                    <select id="filter-rating-iconic" class="filter-select" data-section="Iconic">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                    </select>
+                </div>
+                
+                <div class="sort-controls">
+                    <label for="sort-iconic">Sort by:</label>
+                    <select id="sort-iconic" class="sort-select" data-section="Iconic">
+                        <option value="default">Default</option>
+                        <option value="rating-high">Rating (High to Low)</option>
+                        <option value="rating-low">Rating (Low to High)</option>
+                        <option value="name-az">Name (A-Z)</option>
+                        <option value="name-za">Name (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="attractions-grid">
-                <article class="attraction-card" data-category="Iconic">
+                <article class="attraction-card" data-category="Iconic" data-rating="4.8" data-price="0" data-status="free" data-name="Gardens by the Bay">
                     <div class="card-image" style="background-image: url('images/gardens-by-the-bay.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Gardens by the Bay</h3>
@@ -100,7 +130,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="Iconic">
+                <article class="attraction-card" data-category="Iconic" data-rating="4.9" data-price="0" data-status="free" data-name="Jewel Changi (Rain Vortex)">
                     <div class="card-image" style="background-image: url('images/jewel-changi.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Jewel Changi (Rain Vortex)</h3>
@@ -117,7 +147,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="Iconic">
+                <article class="attraction-card" data-category="Iconic" data-rating="4.6" data-price="35" data-status="paid" data-name="Marina Bay Sands SkyPark">
                     <div class="card-image" style="background-image: url('images/marina-bay-sands.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Marina Bay Sands SkyPark</h3>
@@ -134,7 +164,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="Iconic">
+                <article class="attraction-card" data-category="Iconic" data-rating="4.5" data-price="0" data-status="free" data-name="Merlion Park">
                     <div class="card-image" style="background-image: url('images/merlion.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Merlion Park</h3>
@@ -159,8 +189,38 @@
         <div class="container">
             <h2 class="section-title">Cultural Sites</h2>
             <p class="section-description">Experience Singapore's rich multicultural heritage</p>
+            
+            <!-- Filter and Sort Controls -->
+            <div class="filter-sort-container">
+                <div class="filter-controls">
+                    <label for="filter-status-cultural">Filter by:</label>
+                    <select id="filter-status-cultural" class="filter-select" data-section="cultural">
+                        <option value="all">All Attractions</option>
+                        <option value="free">Free Entry</option>
+                        <option value="paid">Paid Entry</option>
+                    </select>
+                    
+                    <select id="filter-rating-cultural" class="filter-select" data-section="cultural">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                    </select>
+                </div>
+                
+                <div class="sort-controls">
+                    <label for="sort-cultural">Sort by:</label>
+                    <select id="sort-cultural" class="sort-select" data-section="cultural">
+                        <option value="default">Default</option>
+                        <option value="rating-high">Rating (High to Low)</option>
+                        <option value="rating-low">Rating (Low to High)</option>
+                        <option value="name-az">Name (A-Z)</option>
+                        <option value="name-za">Name (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="attractions-grid">
-                <article class="attraction-card" data-category="cultural">
+                <article class="attraction-card" data-category="cultural" data-rating="4.6" data-price="0" data-status="free" data-name="Kampong Glam">
                     <div class="card-image" style="background-image: url('images/kampong-glam.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Kampong Glam</h3>
@@ -168,7 +228,7 @@
                         <p>Historic Malay-Muslim quarter featuring Sultan Mosque, trendy cafes, boutiques, and Middle Eastern cuisine.</p>
                         <div class="card-tags">
                             <span class="tag">History</span>
-                            <span class="tag">Halal Food</span>
+                            <span class="tag">⭐ 4.6</span>
                         </div>
                         <div class="card-buttons">
                             <button class="learn-more" data-attraction="kampong-glam">Learn More</button>
@@ -177,7 +237,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="cultural">
+                <article class="attraction-card" data-category="cultural" data-rating="4.4" data-price="10" data-status="paid" data-name="Peranakan Museum">
                     <div class="card-image" style="background-image: url('images/peranakan-museum.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Peranakan Museum</h3>
@@ -194,7 +254,7 @@
                     </div>
                 </article>
                 
-                <article class="attraction-card" data-category="cultural">
+                <article class="attraction-card" data-category="cultural" data-rating="4.7" data-price="0" data-status="free" data-name="Buddha Tooth Relic Temple">
                     <div class="card-image" style="background-image: url('images/buddha-tooth.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Buddha Tooth Relic Temple</h3>
@@ -219,8 +279,38 @@
         <div class="container">
             <h2 class="section-title">Museums & Galleries</h2>
             <p class="section-description">Discover Singapore's history, art, and innovation</p>
+            
+            <!-- Filter and Sort Controls -->
+            <div class="filter-sort-container">
+                <div class="filter-controls">
+                    <label for="filter-status-museum">Filter by:</label>
+                    <select id="filter-status-museum" class="filter-select" data-section="museum">
+                        <option value="all">All Attractions</option>
+                        <option value="free">Free Entry</option>
+                        <option value="paid">Paid Entry</option>
+                    </select>
+                    
+                    <select id="filter-rating-museum" class="filter-select" data-section="museum">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                    </select>
+                </div>
+                
+                <div class="sort-controls">
+                    <label for="sort-museum">Sort by:</label>
+                    <select id="sort-museum" class="sort-select" data-section="museum">
+                        <option value="default">Default</option>
+                        <option value="rating-high">Rating (High to Low)</option>
+                        <option value="rating-low">Rating (Low to High)</option>
+                        <option value="name-az">Name (A-Z)</option>
+                        <option value="name-za">Name (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="attractions-grid">
-                <article class="attraction-card" data-category="museum">
+                <article class="attraction-card" data-category="museum" data-rating="4.5" data-price="15" data-status="paid" data-name="National Museum of Singapore">
                     <div class="card-image" style="background-image: url('images/national-museum.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>National Museum of Singapore</h3>
@@ -237,7 +327,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="museum">
+                <article class="attraction-card" data-category="museum" data-rating="4.7" data-price="19" data-status="paid" data-name="ArtScience Museum">
                     <div class="card-image" style="background-image: url('images/artscience-museum.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>ArtScience Museum</h3>
@@ -254,7 +344,7 @@
                     </div>
                 </article>
                 
-                <article class="attraction-card" data-category="museum">
+                <article class="attraction-card" data-category="museum" data-rating="4.7" data-price="20" data-status="paid" data-name="National Gallery">
                     <div class="card-image" style="background-image: url('images/national-gallery.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>National Gallery</h3>
@@ -279,8 +369,38 @@
         <div class="container">
             <h2 class="section-title">Hidden Gems</h2>
             <p class="section-description">Local favorites and off-the-beaten-path discoveries</p>
+            
+            <!-- Filter and Sort Controls -->
+            <div class="filter-sort-container">
+                <div class="filter-controls">
+                    <label for="filter-status-hidden">Filter by:</label>
+                    <select id="filter-status-hidden" class="filter-select" data-section="hidden">
+                        <option value="all">All Attractions</option>
+                        <option value="free">Free Entry</option>
+                        <option value="paid">Paid Entry</option>
+                    </select>
+                    
+                    <select id="filter-rating-hidden" class="filter-select" data-section="hidden">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                    </select>
+                </div>
+                
+                <div class="sort-controls">
+                    <label for="sort-hidden">Sort by:</label>
+                    <select id="sort-hidden" class="sort-select" data-section="hidden">
+                        <option value="default">Default</option>
+                        <option value="rating-high">Rating (High to Low)</option>
+                        <option value="rating-low">Rating (Low to High)</option>
+                        <option value="name-az">Name (A-Z)</option>
+                        <option value="name-za">Name (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="attractions-grid">
-                <article class="attraction-card" data-category="hidden">
+                <article class="attraction-card" data-category="hidden" data-rating="4.6" data-price="0" data-status="free" data-name="Henderson Waves">
                     <div class="card-image" style="background-image: url('images/henderson-waves.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Henderson Waves</h3>
@@ -297,7 +417,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="hidden">
+                <article class="attraction-card" data-category="hidden" data-rating="4.3" data-price="0" data-status="free" data-name="Haw Par Villa">
                     <div class="card-image" style="background-image: url('images/haw-par-villa.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Haw Par Villa</h3>
@@ -314,7 +434,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="hidden">
+                <article class="attraction-card" data-category="hidden" data-rating="4.6" data-price="3" data-status="paid" data-name="Pulau Ubin">
                     <div class="card-image" style="background-image: url('images/pulau-ubin.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Pulau Ubin</h3>
@@ -339,8 +459,38 @@
         <div class="container">
             <h2 class="section-title">Wildlife</h2>
             <p class="section-description">Experience Singapore's amazing wildlife and marine life</p>
+            
+            <!-- Filter and Sort Controls -->
+            <div class="filter-sort-container">
+                <div class="filter-controls">
+                    <label for="filter-status-wildlife">Filter by:</label>
+                    <select id="filter-status-wildlife" class="filter-select" data-section="wildlife">
+                        <option value="all">All Attractions</option>
+                        <option value="free">Free Entry</option>
+                        <option value="paid">Paid Entry</option>
+                    </select>
+                    
+                    <select id="filter-rating-wildlife" class="filter-select" data-section="wildlife">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                    </select>
+                </div>
+                
+                <div class="sort-controls">
+                    <label for="sort-wildlife">Sort by:</label>
+                    <select id="sort-wildlife" class="sort-select" data-section="wildlife">
+                        <option value="default">Default</option>
+                        <option value="rating-high">Rating (High to Low)</option>
+                        <option value="rating-low">Rating (Low to High)</option>
+                        <option value="name-az">Name (A-Z)</option>
+                        <option value="name-za">Name (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="attractions-grid">
-                <article class="attraction-card" data-category="wildlife">
+                <article class="attraction-card" data-category="wildlife" data-rating="4.2" data-price="49" data-status="paid" data-name="Night Safari">
                     <div class="card-image" style="background-image: url('images/night-safari.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Night Safari</h3>
@@ -357,7 +507,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="wildlife">
+                <article class="attraction-card" data-category="wildlife" data-rating="4.8" data-price="39" data-status="paid" data-name="Singapore Zoo">
                     <div class="card-image" style="background-image: url('images/singapore-zoo.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Singapore Zoo</h3>
@@ -382,8 +532,38 @@
         <div class="container">
             <h2 class="section-title">Sentosa Island</h2>
             <p class="section-description">Singapore's premier island resort destination with beaches, theme parks, and attractions</p>
+            
+            <!-- Filter and Sort Controls -->
+            <div class="filter-sort-container">
+                <div class="filter-controls">
+                    <label for="filter-status-sentosa">Filter by:</label>
+                    <select id="filter-status-sentosa" class="filter-select" data-section="Sentosa">
+                        <option value="all">All Attractions</option>
+                        <option value="free">Free Entry</option>
+                        <option value="paid">Paid Entry</option>
+                    </select>
+                    
+                    <select id="filter-rating-sentosa" class="filter-select" data-section="Sentosa">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                    </select>
+                </div>
+                
+                <div class="sort-controls">
+                    <label for="sort-sentosa">Sort by:</label>
+                    <select id="sort-sentosa" class="sort-select" data-section="Sentosa">
+                        <option value="default">Default</option>
+                        <option value="rating-high">Rating (High to Low)</option>
+                        <option value="rating-low">Rating (Low to High)</option>
+                        <option value="name-az">Name (A-Z)</option>
+                        <option value="name-za">Name (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+            
             <div class="attractions-grid">
-                <article class="attraction-card" data-category="Sentosa">
+                <article class="attraction-card" data-category="Sentosa" data-rating="4.9" data-price="81" data-status="paid" data-name="Universal Studios Singapore">
                     <div class="card-image" style="background-image: url('images/universal-studios.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Universal Studios Singapore</h3>
@@ -400,7 +580,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="Sentosa">
+                <article class="attraction-card" data-category="Sentosa" data-rating="4.8" data-price="0" data-status="free" data-name="Sentosa Beaches">
                     <div class="card-image" style="background-image: url('images/sentosa-beaches.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>Sentosa Beaches</h3>
@@ -417,7 +597,7 @@
                     </div>
                 </article>
 
-                <article class="attraction-card" data-category="Sentosa">
+                <article class="attraction-card" data-category="Sentosa" data-rating="4.7" data-price="41" data-status="paid" data-name="S.E.A. Aquarium">
                     <div class="card-image" style="background-image: url('images/sea-aquarium.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="card-content">
                         <h3>S.E.A. Aquarium</h3>
@@ -447,14 +627,269 @@
             </div>
         </div>
     </section>
-    <!-- CTA Section -->
-    <section class="cta-section">
+
+    <!-- Reviews & Testimonials Section -->
+    <section class="reviews-section" id="reviews">
         <div class="container">
-            <h2>Ready to Explore Singapore?</h2>
-            <p>Let TravelMate be your personalized companion throughout your exchange journey</p>
-            <button class="cta-button-secondary" id="planTrip">Plan Your First Trip</button>
+            <h2 class="section-title">What Our Users Say</h2>
+            <p class="section-description">Real feedback from exchange students using TravelMate</p>
+            
+            <!-- Existing Reviews Grid -->
+            <div class="reviews-grid">
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <span>SL</span>
+                            </div>
+                            <div class="reviewer-details">
+                                <h4>Sarah Lee</h4>
+                                <p class="reviewer-country">🇺🇸 USA • Exchange Student</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-number">5.0</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"The AI chatbot is incredibly helpful! It helped me plan my first weekend in Singapore and even suggested the best hawker centers near my campus. The personalized recommendations made me feel confident exploring on my own."</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">2 weeks ago</span>
+                        <span class="review-badge">Verified User</span>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <span>MK</span>
+                            </div>
+                            <div class="reviewer-details">
+                                <h4>Marcus Kim</h4>
+                                <p class="reviewer-country">🇰🇷 South Korea • RP Student</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-number">5.0</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Best travel guide for students! The website is easy to navigate and the AI bot answers questions instantly. I used it to find budget-friendly activities and saved so much money. Highly recommend to all exchange students!"</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">1 month ago</span>
+                        <span class="review-badge">Verified User</span>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <span>EP</span>
+                            </div>
+                            <div class="reviewer-details">
+                                <h4>Emma Peterson</h4>
+                                <p class="reviewer-country">🇬🇧 UK • Exchange Student</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-number">5.0</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"The chatbot is like having a local friend! It gave me real-time suggestions based on the weather and even helped me navigate the MRT system. TravelMate made my exchange experience so much smoother."</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">3 weeks ago</span>
+                        <span class="review-badge">Verified User</span>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                                <span>RC</span>
+                            </div>
+                            <div class="reviewer-details">
+                                <h4>Raj Chakraborty</h4>
+                                <p class="reviewer-country">🇮🇳 India • RP Student</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <span class="stars">⭐⭐⭐⭐</span>
+                            <span class="rating-number">4.5</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Great resource for exploring Singapore! The attraction recommendations are spot-on. The only improvement I'd suggest is adding more information about student discounts. Overall, very satisfied!"</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">1 week ago</span>
+                        <span class="review-badge">Verified User</span>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                                <span>LW</span>
+                            </div>
+                            <div class="reviewer-details">
+                                <h4>Lisa Wang</h4>
+                                <p class="reviewer-country">🇨🇳 China • Exchange Student</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-number">5.0</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Amazing AI chatbot! It understands context and remembers my preferences. Helped me discover hidden gems I wouldn't have found otherwise. The website design is also very user-friendly and modern."</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">2 days ago</span>
+                        <span class="review-badge">Verified User</span>
+                    </div>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                                <span>JS</span>
+                            </div>
+                            <div class="reviewer-details">
+                                <h4>James Silva</h4>
+                                <p class="reviewer-country">🇧🇷 Brazil • RP Student</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-number">5.0</span>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Perfect for international students! The AI is super responsive and the information is accurate. I've been using it for 3 months now and it never disappoints. TravelMate is a must-have app!"</p>
+                    </div>
+                    <div class="review-footer">
+                        <span class="review-date">5 days ago</span>
+                        <span class="review-badge">Verified User</span>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Review Statistics -->
+            <div class="review-stats">
+                <div class="stat-card">
+                    <div class="stat-number">4.9</div>
+                    <div class="stat-label">Average Rating</div>
+                    <div class="stat-stars">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1,247</div>
+                    <div class="stat-label">Total Reviews</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Recommend Rate</div>
+                </div>
+            </div>
+
+            <!-- Submit Review Form -->
+            <div class="submit-review-section">
+                <h3 class="submit-review-title">Share Your Experience</h3>
+                <p class="submit-review-description">Help other exchange students by sharing your thoughts about TravelMate</p>
+                
+                <form class="review-form" id="reviewForm">
+                    <div class="form-toggle">
+                        <label class="toggle-option">
+                            <input type="radio" name="reviewType" value="anonymous" checked>
+                            <span>Anonymous Review</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="radio" name="reviewType" value="named">
+                            <span>Post with Profile</span>
+                        </label>
+                    </div>
+
+                    <!-- Named Review Fields (initially hidden) -->
+                    <div class="named-review-fields" id="namedFields" style="display: none;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reviewerName">Your Name</label>
+                                <input type="text" id="reviewerName" placeholder="e.g., John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="reviewerCountry">Country</label>
+                                <select id="reviewerCountry">
+                                    <option value="">Select your country</option>
+                                    <option value="🇺🇸 USA">🇺🇸 USA</option>
+                                    <option value="🇬🇧 UK">🇬🇧 UK</option>
+                                    <option value="🇨🇳 China">🇨🇳 China</option>
+                                    <option value="🇰🇷 South Korea">🇰🇷 South Korea</option>
+                                    <option value="🇯🇵 Japan">🇯🇵 Japan</option>
+                                    <option value="🇮🇳 India">🇮🇳 India</option>
+                                    <option value="🇧🇷 Brazil">🇧🇷 Brazil</option>
+                                    <option value="🇩🇪 Germany">🇩🇪 Germany</option>
+                                    <option value="🇫🇷 France">🇫🇷 France</option>
+                                    <option value="🇦🇺 Australia">🇦🇺 Australia</option>
+                                    <option value="🇨🇦 Canada">🇨🇦 Canada</option>
+                                    <option value="🇮🇩 Indonesia">🇮🇩 Indonesia</option>
+                                    <option value="🇲🇾 Malaysia">🇲🇾 Malaysia</option>
+                                    <option value="🇹🇭 Thailand">🇹🇭 Thailand</option>
+                                    <option value="🇻🇳 Vietnam">🇻🇳 Vietnam</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rating Selection -->
+                    <div class="form-group">
+                        <label>Your Rating</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-rating="1">☆</span>
+                            <span class="star" data-rating="2">☆</span>
+                            <span class="star" data-rating="3">☆</span>
+                            <span class="star" data-rating="4">☆</span>
+                            <span class="star" data-rating="5">☆</span>
+                        </div>
+                        <input type="hidden" id="ratingValue" value="0">
+                    </div>
+
+                    <!-- Review Text -->
+                    <div class="form-group">
+                        <label for="reviewText">Your Review</label>
+                        <textarea id="reviewText" rows="5" placeholder="Share your experience with TravelMate... What did you like? How did it help you? Any suggestions?" required></textarea>
+                        <span class="char-count"><span id="charCount">0</span>/500 characters</span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-review-btn">
+                        <span>Submit Review</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </form>
+
+                <!-- Success Message (initially hidden) -->
+                <div class="review-success" id="reviewSuccess" style="display: none;">
+                    <div class="success-icon">✓</div>
+                    <h4>Thank you for your feedback!</h4>
+                    <p>Your review has been submitted and will appear after moderation.</p>
+                </div>
+            </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -485,8 +920,8 @@
                 </div>
                 <div class="footer-section">
                     <h4>Connect</h4>
-                    <p>📧 hello@travelmate.sg</p>
                     <p>📍 Republic Polytechnic, Singapore</p>
+                    <p>💬 <a href="https://t.me/TravelMateRP_Bot" target="_blank">Start chatting on Telegram</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
