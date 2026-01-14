@@ -55,7 +55,8 @@ const attractionData = {
             'Free outdoor gardens'
         ],
         researchNote: 'Includes Supertree Grove & Light Show.',
-        tips: 'Garden Rhapsody shows at 7:45 PM & 8:45 PM daily'
+        tips: 'Garden Rhapsody shows at 7:45 PM & 8:45 PM daily',
+        website: 'https://www.gardensbythebay.com.sg/'
     },
     'jewel-changi': {
         title: 'Jewel Changi (Rain Vortex)',
@@ -77,7 +78,8 @@ const attractionData = {
             'Light and sound show'
         ],
         researchNote: '"Jurassic World" immersive theme in Cloud Forest.',
-        tips: 'Best viewed during light show at 8 PM'
+        tips: 'Best viewed during light show at 8 PM',
+        website: 'https://www.jewelchangiairport.com/'
     },
     'marina-bay-sands': {
         title: 'Marina Bay Sands SkyPark',
@@ -99,7 +101,8 @@ const attractionData = {
             'Spectra Light and Water Show (free, nightly)'
         ],
         researchNote: 'Peak hours (after 5pm) are more expensive.',
-        tips: 'Visit at sunset for best photo opportunities'
+        tips: 'Visit at sunset for best photo opportunities',
+        website: 'https://www.marinabaysands.com/sands-skypark.html'
     },
     'merlion': {
         title: 'Merlion Park',
@@ -121,7 +124,8 @@ const attractionData = {
             'Beautiful day and night views'
         ],
         researchNote: 'Free viewing from levels 1-5.',
-        tips: 'Best visited during sunrise, sunset, or evening for Marina Bay Sands light show'
+        tips: 'Best visited during sunrise, sunset, or evening for Marina Bay Sands light show',
+        website: 'https://www.visitsingapore.com/see-do-singapore/recreation-leisure/viewpoints/merlion-park/'
     },
     'buddha-tooth': {
         title: 'Buddha Tooth Relic Temple',
@@ -143,7 +147,8 @@ const attractionData = {
             'Free admission'
         ],
         researchNote: 'Required for the walking nets/glass bridge.',
-        tips: 'Dress code: Shoulders/knees must be covered.'
+        tips: 'Dress code: Shoulders/knees must be covered.',
+        website: 'http://www.btrts.org.sg/'
     },
     'kampong-glam': {
         title: 'Kampong Glam (Haji Lane)',
@@ -165,7 +170,8 @@ const attractionData = {
             'Colorful street art'
         ],
         researchNote: 'Dress code: Shoulders/knees must be covered.',
-        tips: 'Visit in the late afternoon for best lighting'
+        tips: 'Visit in the late afternoon for best lighting',
+        website: 'https://www.visitsingapore.com/see-do-singapore/places-to-see/kampong-gelam/'
     },
     'chinatown': {
         title: 'Chinatown',
@@ -498,6 +504,8 @@ function initializeApp() {
     initNavbarScroll();
     initializeFilterAndSort();
     initializeReviewForm();
+    initBudgetCalculator();
+    initializeFAQ();
     
     console.log('TravelMate initialized successfully! 🚀');
 }
@@ -697,6 +705,10 @@ function handleLearnMore(e) {
 }
 
 function openModal(data) {
+    // Get website URL if available
+    const attractionKey = Object.keys(attractionData).find(key => attractionData[key].title === data.title);
+    const websiteUrl = attractionKey && window.attractionWebsites ? window.attractionWebsites[attractionKey] : data.website;
+    
     // Build modal content with full image and all details
     const modalContent = `
         <div style="position: relative; width: 100%; height: 550px; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem;">
@@ -715,11 +727,19 @@ function openModal(data) {
         
         <p style="font-size: 1.05rem; margin-bottom: 1.5rem; color: var(--text-secondary); line-height: 1.8;">${data.description}</p>
         
-        ${data.location ? `
-        <button id="showOnMapBtn" data-lat="${data.location.lat}" data-lng="${data.location.lng}" data-title="${data.title}" style="background: linear-gradient(135deg, var(--primary-green), var(--accent-teal)); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; margin-bottom: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3);">
-            📍 Show on Map
-        </button>
-        ` : ''}
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+            ${data.location ? `
+            <button id="showOnMapBtn" data-lat="${data.location.lat}" data-lng="${data.location.lng}" data-title="${data.title}" style="background: linear-gradient(135deg, var(--primary-green), var(--accent-teal)); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(78, 205, 196, 0.3); flex: 1; min-width: 200px;">
+                📍 Show on Map
+            </button>
+            ` : ''}
+            
+            ${websiteUrl ? `
+            <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, var(--primary-red), var(--accent-red)); color: white; padding: 0.8rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3); text-decoration: none; display: inline-block; text-align: center; flex: 1; min-width: 200px;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 107, 107, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(255, 107, 107, 0.3)'">
+                🎫 Visit Official Website
+            </a>
+            ` : ''}
+        </div>
         
         <div style="background: var(--off-white); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
             <h3 style="color: var(--primary-green); margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem;">📋 Essential Information</h3>
@@ -1398,6 +1418,338 @@ function initializeReviewForm() {
             }, 3000);
         });
     }
+}
+
+// ============================================
+// Budget Calculator Functionality
+// ============================================
+
+function initBudgetCalculator() {
+    const budgetForm = document.getElementById('budgetForm');
+    const budgetResults = document.getElementById('budgetResults');
+    
+    if (!budgetForm) return;
+    
+    // Attraction prices database (in SGD)
+    const attractionPrices = {
+        'gardens-by-the-bay': 28,
+        'jewel-changi': 0,
+        'marina-bay-sands': 35,
+        'merlion': 0,
+        'kampong-glam': 0,
+        'peranakan-museum': 10,
+        'buddha-tooth': 0,
+        'national-museum': 15,
+        'artscience-museum': 19,
+        'national-gallery': 20,
+        'henderson-waves': 0,
+        'haw-par-villa': 0,
+        'pulau-ubin': 3,
+        'night-safari': 49,
+        'singapore-zoo': 39,
+        'universal-studios': 81,
+        'sentosa-beaches': 0,
+        'sea-aquarium': 41
+    };
+    
+    // Attraction website URLs
+    const attractionWebsites = {
+        'gardens-by-the-bay': 'https://www.gardensbythebay.com.sg/',
+        'jewel-changi': 'https://www.jewelchangiairport.com/',
+        'marina-bay-sands': 'https://www.marinabaysands.com/sands-skypark.html',
+        'merlion': 'https://www.visitsingapore.com/see-do-singapore/recreation-leisure/viewpoints/merlion-park/',
+        'kampong-glam': 'https://www.visitsingapore.com/see-do-singapore/places-to-see/kampong-gelam/',
+        'peranakan-museum': 'https://www.peranakanmuseum.org.sg/',
+        'buddha-tooth': 'http://www.btrts.org.sg/',
+        'national-museum': 'https://www.nationalmuseum.sg/',
+        'artscience-museum': 'https://www.marinabaysands.com/museum.html',
+        'national-gallery': 'https://www.nationalgallery.sg/',
+        'henderson-waves': 'https://www.nparks.gov.sg/gardens-parks-and-nature/parks-and-nature-reserves/southern-ridges',
+        'haw-par-villa': 'https://www.hawparvilla.sg/',
+        'pulau-ubin': 'https://www.nparks.gov.sg/gardens-parks-and-nature/parks-and-nature-reserves/pulau-ubin',
+        'night-safari': 'https://www.mandai.com/en/singapore-night-safari.html',
+        'singapore-zoo': 'https://www.mandai.com/en/singapore-zoo.html',
+        'universal-studios': 'https://www.rwsentosa.com/en/attractions/universal-studios-singapore',
+        'sentosa-beaches': 'https://www.sentosa.com.sg/en/things-to-do/beaches/',
+        'sea-aquarium': 'https://www.rwsentosa.com/en/attractions/sea-aquarium'
+    };
+    
+    // Make websites globally accessible
+    window.attractionWebsites = attractionWebsites;
+    
+    budgetForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const totalBudget = parseFloat(document.getElementById('totalBudget').value);
+        const tripDays = parseInt(document.getElementById('tripDays').value);
+        
+        if (!totalBudget || !tripDays || totalBudget <= 0 || tripDays <= 0) {
+            alert('Please enter valid budget and trip duration!');
+            return;
+        }
+        
+        // Calculate budget breakdown
+        // Food: 30%, Transport: 15%, Accommodation: 35%, Attractions: 20%
+        const foodBudget = totalBudget * 0.30;
+        const transportBudget = totalBudget * 0.15;
+        const accommodationBudget = totalBudget * 0.35;
+        const attractionsBudget = totalBudget * 0.20;
+        
+        // Update UI with budget breakdown
+        document.getElementById('foodBudget').textContent = `$${foodBudget.toFixed(0)}`;
+        document.getElementById('transportBudget').textContent = `$${transportBudget.toFixed(0)}`;
+        document.getElementById('accommodationBudget').textContent = `$${accommodationBudget.toFixed(0)}`;
+        document.getElementById('attractionsBudget').textContent = `$${attractionsBudget.toFixed(0)}`;
+        
+        // Calculate affordable attractions
+        const affordableAttractions = [];
+        const freeAttractions = [];
+        const paidAttractions = [];
+        
+        let remainingBudget = attractionsBudget;
+        
+        // Separate free and paid attractions
+        for (const [key, price] of Object.entries(attractionPrices)) {
+            if (price === 0) {
+                freeAttractions.push({ name: key, price: price });
+            } else if (price <= attractionsBudget) {
+                paidAttractions.push({ name: key, price: price });
+            }
+        }
+        
+        // Sort paid attractions by price (ascending)
+        paidAttractions.sort((a, b) => a.price - b.price);
+        
+        // Add free attractions first
+        affordableAttractions.push(...freeAttractions);
+        
+        // Add paid attractions that fit the budget
+        for (const attraction of paidAttractions) {
+            if (remainingBudget >= attraction.price) {
+                affordableAttractions.push(attraction);
+                remainingBudget -= attraction.price;
+            }
+        }
+        
+        // Update statistics
+        document.getElementById('affordableCount').textContent = affordableAttractions.length;
+        document.getElementById('freeCount').textContent = freeAttractions.length;
+        document.getElementById('paidCount').textContent = affordableAttractions.length - freeAttractions.length;
+        
+        // Generate budget tips
+        const budgetTips = generateBudgetTips(attractionsBudget, tripDays, affordableAttractions.length, freeAttractions.length);
+        const budgetTipsContainer = document.getElementById('budgetTips');
+        budgetTipsContainer.innerHTML = '';
+        budgetTips.forEach(tip => {
+            const li = document.createElement('li');
+            li.textContent = tip;
+            budgetTipsContainer.appendChild(li);
+        });
+        
+        // Store affordable attractions in a global variable for access by click handlers
+        window.currentAffordableAttractions = affordableAttractions;
+        
+        // Add click handlers to summary stats to show detailed list
+        setupAttractionListDisplay(affordableAttractions, freeAttractions, attractionPrices);
+        
+        // Show results
+        budgetResults.style.display = 'block';
+        
+        // Scroll to results
+        budgetResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
+
+function setupAttractionListDisplay(affordableAttractions, freeAttractions, attractionPrices) {
+    // Store the attraction lists for filtering
+    const paidAttractions = affordableAttractions.filter(attr => attr.price > 0);
+    
+    // Check if list container already exists, if not create it
+    let attractionListContainer = document.getElementById('affordableAttractionsList');
+    if (!attractionListContainer) {
+        attractionListContainer = document.createElement('div');
+        attractionListContainer.id = 'affordableAttractionsList';
+        attractionListContainer.className = 'affordable-attractions-list';
+        attractionListContainer.style.display = 'none';
+        
+        // Insert after the summary
+        const summarySection = document.querySelector('.recommendation-summary');
+        summarySection.parentNode.insertBefore(attractionListContainer, summarySection.nextSibling);
+    }
+    
+    // Function to display attractions based on filter
+    function displayAttractions(attractionsList, filterType = 'all') {
+        let listHTML = '<h5>';
+        if (filterType === 'free') {
+            listHTML += '🆓 Free Attractions for Your Budget';
+        } else if (filterType === 'paid') {
+            listHTML += '💰 Paid Attractions You Can Afford';
+        } else {
+            listHTML += '📍 All Recommended Attractions for Your Budget';
+        }
+        listHTML += '</h5><div class="attraction-list-grid">';
+        
+        attractionsList.forEach(attr => {
+            const attrData = attractionData[attr.name];
+            const displayName = attrData ? attrData.title : formatAttractionName(attr.name);
+            const priceText = attr.price === 0 ? 'FREE' : `$${attr.price}`;
+            const category = attrData ? attrData.category : 'Attraction';
+            const rating = attrData ? attrData.rating : 'N/A';
+            
+            listHTML += `
+                <div class="budget-attraction-card" data-attraction="${attr.name}">
+                    <div class="budget-card-header">
+                        <h6>${displayName}</h6>
+                        <span class="budget-price ${attr.price === 0 ? 'free' : ''}">${priceText}</span>
+                    </div>
+                    <div class="budget-card-meta">
+                        <span class="category-badge">${category}</span>
+                        <span class="rating-badge">⭐ ${rating}</span>
+                    </div>
+                    <button class="budget-learn-more" data-attraction="${attr.name}">View Details</button>
+                </div>
+            `;
+        });
+        
+        listHTML += '</div>';
+        attractionListContainer.innerHTML = listHTML;
+        
+        // Add click handlers to the "View Details" buttons
+        setTimeout(() => {
+            document.querySelectorAll('.budget-learn-more').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const attractionKey = this.getAttribute('data-attraction');
+                    const data = attractionData[attractionKey];
+                    if (data) {
+                        openModal(data);
+                    } else {
+                        console.warn(`No data found for attraction: ${attractionKey}`);
+                    }
+                });
+            });
+        }, 100);
+    }
+    
+    // Add click handlers to summary stats
+    const affordableCountStat = document.querySelector('.summary-stat:nth-child(1)');
+    const freeCountStat = document.querySelector('.summary-stat:nth-child(2)');
+    const paidCountStat = document.querySelector('.summary-stat:nth-child(3)');
+    
+    // All attractions (click on total count)
+    if (affordableCountStat) {
+        affordableCountStat.style.cursor = 'pointer';
+        affordableCountStat.onclick = function() {
+            if (attractionListContainer.style.display === 'none' || attractionListContainer.dataset.currentFilter !== 'all') {
+                displayAttractions(affordableAttractions, 'all');
+                attractionListContainer.style.display = 'block';
+                attractionListContainer.dataset.currentFilter = 'all';
+                attractionListContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                attractionListContainer.style.display = 'none';
+                attractionListContainer.dataset.currentFilter = '';
+            }
+        };
+    }
+    
+    // Free attractions only (click on free count)
+    if (freeCountStat) {
+        freeCountStat.style.cursor = 'pointer';
+        freeCountStat.onclick = function() {
+            if (attractionListContainer.style.display === 'none' || attractionListContainer.dataset.currentFilter !== 'free') {
+                displayAttractions(freeAttractions, 'free');
+                attractionListContainer.style.display = 'block';
+                attractionListContainer.dataset.currentFilter = 'free';
+                attractionListContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                attractionListContainer.style.display = 'none';
+                attractionListContainer.dataset.currentFilter = '';
+            }
+        };
+    }
+    
+    // Paid attractions only (click on paid count)
+    if (paidCountStat) {
+        paidCountStat.style.cursor = 'pointer';
+        paidCountStat.onclick = function() {
+            if (attractionListContainer.style.display === 'none' || attractionListContainer.dataset.currentFilter !== 'paid') {
+                displayAttractions(paidAttractions, 'paid');
+                attractionListContainer.style.display = 'block';
+                attractionListContainer.dataset.currentFilter = 'paid';
+                attractionListContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                attractionListContainer.style.display = 'none';
+                attractionListContainer.dataset.currentFilter = '';
+            }
+        };
+    }
+}
+
+function formatAttractionName(key) {
+    return key.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+
+function generateBudgetTips(attractionsBudget, tripDays, totalAttractions, freeAttractions) {
+    const tips = [];
+    
+    // Daily budget tip
+    const dailyAttractionBudget = attractionsBudget / tripDays;
+    tips.push(`You can spend about $${dailyAttractionBudget.toFixed(0)} per day on attractions.`);
+    
+    // Free attractions tip
+    if (freeAttractions > 0) {
+        tips.push(`Visit ${freeAttractions} free attractions to maximize your budget.`);
+    }
+    
+    // Budget level tips
+    if (attractionsBudget < 100) {
+        tips.push('Focus on free attractions and gardens. Many of Singapore\'s best sites are free!');
+        tips.push('Visit during off-peak hours for better photos and fewer crowds.');
+    } else if (attractionsBudget < 200) {
+        tips.push('You can visit 2-3 major paid attractions plus several free ones.');
+        tips.push('Consider buying combo tickets at theme parks for savings.');
+    } else if (attractionsBudget < 300) {
+        tips.push('Great budget! You can explore most major attractions comfortably.');
+        tips.push('Book Universal Studios and zoo tickets online in advance for discounts.');
+    } else {
+        tips.push('Excellent budget! You can visit all major attractions with room to spare.');
+        tips.push('Consider VIP experiences or premium tours at select attractions.');
+    }
+    
+    // Student discount tip
+    tips.push('Always bring your student ID - many attractions offer student discounts!');
+    
+    // Food tip related to budget
+    if (attractionsBudget > 150) {
+        tips.push('Save on food by eating at hawker centers ($3-$5 per meal) instead of restaurants.');
+    }
+    
+    return tips;
+}
+
+// ============================================// FAQ Accordion Functionality
+// ============================================
+
+function initializeFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Check if this item is currently active
+            const isActive = item.classList.contains('active');
+            
+            // Close all FAQ items
+            faqItems.forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // If the clicked item wasn't active, open it
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
 }
 
 // ============================================
